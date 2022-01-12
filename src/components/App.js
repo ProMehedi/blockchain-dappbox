@@ -16,9 +16,11 @@ const ipfs = ipfsClient({
 
 const App = () => {
   const [loading, setLoading] = React.useState(false)
+  const [uploading, setUploading] = React.useState(false)
   const [account, setAccount] = React.useState('')
   const [files, setFiles] = React.useState([])
   const [fileCount, setFileCount] = React.useState(0)
+  const [contract, setContract] = React.useState(null)
 
   React.useEffect(() => {
     loadWeb3()
@@ -51,6 +53,7 @@ const App = () => {
     const networkData = DStorage.networks[networkId]
     if (networkData) {
       const dstorage = new web3.eth.Contract(DStorage.abi, networkData.address)
+      setContract(dstorage)
       const _fileCount = await dstorage.methods.fileCount().call()
       setFileCount(Number(_fileCount))
 
@@ -65,10 +68,32 @@ const App = () => {
     setLoading(false)
   }
 
-  const uploadFile = () => {}
+  const uploadFile = (name, desc, buffer, type) => {
+    setUploading(true)
+
+    ipfs.add(buffer, (err, result) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+
+      const hash = result[0].hash
+      const size = result[0].size
+      contract.methods
+        .uploadFile(hash, size, type, name, desc)
+        .send({ from: account })
+        .once('receipt', (receipt) => {
+          setUploading(false)
+          loadBlockchainData()
+        })
+
+      console.log(result)
+    })
+  }
 
   console.log(fileCount)
   console.log(files)
+  console.log(uploading)
 
   return (
     <div>
@@ -81,7 +106,7 @@ const App = () => {
           <ScaleLoader color='#123abc' />
         </div>
       ) : (
-        <Main files={files} uploadFile={uploadFile} />
+        <Main files={files} uploadFile={uploadFile} loading={uploading} />
       )}
     </div>
   )

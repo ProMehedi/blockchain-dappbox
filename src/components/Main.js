@@ -2,16 +2,19 @@ import React from 'react'
 import { convertBytes } from './helpers'
 import moment from 'moment'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { ScaleLoader } from 'react-spinners'
 
-const Main = ({ uploadFile }) => {
+const Main = ({ uploadFile, loading }) => {
   const [name, setName] = React.useState('')
   const [desc, setDesc] = React.useState('')
+  const [type, setType] = React.useState('')
   const [buffer, setBuffer] = React.useState([])
 
   //Get video
   const captureFile = (event) => {
     event.preventDefault()
     const file = event.target.files[0]
+    setType(file.type)
     const reader = new window.FileReader()
     reader.readAsArrayBuffer(file)
     reader.onloadend = async () => {
@@ -22,8 +25,7 @@ const Main = ({ uploadFile }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    uploadFile(name, desc, buffer)
-    console.log(name, desc, buffer)
+    uploadFile(name, desc, buffer, type)
   }
 
   return (
@@ -69,8 +71,19 @@ const Main = ({ uploadFile }) => {
                         onChange={({ target }) => setDesc(target.value)}
                       />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
-                      Upload
+                    <Button
+                      variant='primary btn-block'
+                      type='submit'
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <>
+                          Uploading...{' '}
+                          <ScaleLoader color='#fff' height={15} width={3} />
+                        </>
+                      ) : (
+                        'Upload'
+                      )}
                     </Button>
                   </Form>
                 </Card.Text>
