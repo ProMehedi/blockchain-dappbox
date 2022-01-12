@@ -1,4 +1,4 @@
-//import DStorage from '../abis/DStorage.json'
+import DStorage from '../abis/DStorage.json'
 import React from 'react'
 import Navbar from './Navbar'
 import Main from './Main'
@@ -12,6 +12,7 @@ const App = () => {
   const [loading, setLoading] = React.useState(false)
   const [account, setAccount] = React.useState('')
   const [files, setFiles] = React.useState([])
+  const [fileCount, setFileCount] = React.useState(0)
 
   React.useEffect(() => {
     loadWeb3()
@@ -40,10 +41,28 @@ const App = () => {
     const accounts = await web3.eth.getAccounts()
     setAccount(accounts[0])
 
+    const networkId = await web3.eth.net.getId()
+    const networkData = DStorage.networks[networkId]
+    if (networkData) {
+      const dstorage = new web3.eth.Contract(DStorage.abi, networkData.address)
+      const _fileCount = await dstorage.methods.fileCount().call()
+      setFileCount(Number(_fileCount))
+
+      for (let i = 1; i <= _fileCount; i++) {
+        const file = await dstorage.methods.files(i).call()
+        setFiles((files) => [...files, file])
+      }
+    } else {
+      window.alert('Contract not deployed to "Ropsten" network.')
+    }
+
     setLoading(false)
   }
 
   const uploadFile = () => {}
+
+  console.log(fileCount)
+  console.log(files)
 
   return (
     <div>

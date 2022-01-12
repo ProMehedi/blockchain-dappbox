@@ -17,6 +17,7 @@ const Navbar = ({ account }) => {
       <ul className='navbar-nav px-3'>
         {account ? (
           <li>
+            <small className='text-light mr-2'>{account}</small>
             <img
               src={`data:image/png;base64,${new Identicon(
                 account,
@@ -26,7 +27,6 @@ const Navbar = ({ account }) => {
               height='30'
               alt={account}
             />
-            <small className='text-light ml-2'>{account}</small>
           </li>
         ) : (
           <b className='text-light'>0x0</b>
