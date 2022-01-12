@@ -25,6 +25,12 @@ contract DStorage {
   }
 
   function uploadFile(string memory _hash, uint _size, string memory _fileType, string memory _name, string memory _description) public {
+    require(bytes(_hash).length == 32);
+    require(bytes(_fileType).length > 0);
+    require(bytes(_name).length > 0);
+    require(bytes(_description).length > 0);
+    require(_size > 0);
+    require(msg.sender != address(0));
 
     fileCount++;
     files[fileCount] = File(fileCount, _hash, _size, _fileType, _name, _description, block.timestamp, msg.sender);
