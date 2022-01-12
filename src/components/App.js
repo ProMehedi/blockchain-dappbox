@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Main from './Main'
 import Web3 from 'web3'
 import './App.css'
+import { ScaleLoader } from 'react-spinners'
 
 //Declare IPFS
 
@@ -31,11 +32,15 @@ const App = () => {
   }
 
   const loadBlockchainData = async () => {
+    setLoading(true)
+
     const web3 = window.web3
 
     // Load account
     const accounts = await web3.eth.getAccounts()
     setAccount(accounts[0])
+
+    setLoading(false)
   }
 
   const uploadFile = () => {}
@@ -44,8 +49,11 @@ const App = () => {
     <div>
       <Navbar account={account} />
       {loading ? (
-        <div id='loader' className='text-center mt-5'>
-          <p>Loading...</p>
+        <div
+          className='d-flex align-items-center justify-content-center'
+          style={{ minHeight: 'calc(100vh - 40px)' }}
+        >
+          <ScaleLoader color='#123abc' />
         </div>
       ) : (
         <Main files={files} uploadFile={uploadFile} />
