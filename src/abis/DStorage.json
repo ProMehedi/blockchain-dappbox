@@ -1,0 +1,191 @@
+{
+  "contractName": "DStorage",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/contracts/DStorage.sol\":\"DStorage\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/contracts/DStorage.sol\":{\"keccak256\":\"0xed934ce22c490f019034fab75158a80522c6464125e6a9485080300020f34f7d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8562bacee9db06ad6087c16af811c9fea51f2a737bf6b73357d856b39b9d42f4\",\"dweb:/ipfs/QmbCBEiwAHidVjid856WRPakZ8yfnD1VmT9mg3rP8pBsWt\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212204df0a772f36f7aa38acacbae82b144a6c62d04911cb056f7f36b82e71dcdafb764736f6c634300080b0033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212204df0a772f36f7aa38acacbae82b144a6c62d04911cb056f7f36b82e71dcdafb764736f6c634300080b0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "60:524:0:-:0;;;179:27;;;;;;;;;;60:524;;;;;;",
+  "deployedSourceMap": "60:524:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract DStorage {\r\n  // Name\r\n  // Number of files\r\n  // Mapping fileId=>Struct \r\n\r\n  // Struct\r\n\r\n\r\n  // Event\r\n\r\n  constructor() public {\r\n  }\r\n\r\n  // Upload File function\r\n\r\n    // Make sure the file hash exists\r\n\r\n    // Make sure file type exists\r\n\r\n    // Make sure file description exists\r\n\r\n    // Make sure file fileName exists\r\n\r\n    // Make sure uploader address exists\r\n\r\n    // Make sure file size is more than 0\r\n\r\n\r\n    // Increment file id\r\n\r\n    // Add File to the contract\r\n\r\n    // Trigger an event\r\n\r\n}",
+  "sourcePath": "D:\\OneDrive\\BlockChain\\dappbox\\src\\contracts\\DStorage.sol",
+  "ast": {
+    "absolutePath": "project:/src/contracts/DStorage.sol",
+    "exportedSymbols": {
+      "DStorage": [
+        6
+      ]
+    },
+    "id": 7,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "DStorage",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "DStorage",
+        "nameLocation": "69:8:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "200:6:0",
+              "statements": []
+            },
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "190:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "200:0:0"
+            },
+            "scope": 6,
+            "src": "179:27:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "60:524:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:551:0"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/src/contracts/DStorage.sol",
+    "exportedSymbols": {
+      "DStorage": [
+        6
+      ]
+    },
+    "id": 7,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "DStorage",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "DStorage",
+        "nameLocation": "69:8:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "200:6:0",
+              "statements": []
+            },
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "190:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "200:0:0"
+            },
+            "scope": 6,
+            "src": "179:27:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "60:524:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:551:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-01-12T11:39:16.604Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
