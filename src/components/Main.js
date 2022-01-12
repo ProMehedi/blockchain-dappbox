@@ -4,6 +4,22 @@ import moment from 'moment'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 
 const Main = ({}) => {
+  const [buffer, setBuffer] = React.useState([])
+
+  //Get video
+  const captureFile = (event) => {
+    event.preventDefault()
+    const file = event.target.files[0]
+    const reader = new window.FileReader()
+    reader.readAsArrayBuffer(file)
+    reader.onloadend = async () => {
+      const _buffer = Buffer.from(reader.result)
+      setBuffer(_buffer)
+    }
+  }
+
+  console.log(buffer)
+
   return (
     <Container fluid>
       <Row className='justify-content-center'>
@@ -14,10 +30,14 @@ const Main = ({}) => {
                 <Card.Title>
                   <h3>Upload your file</h3>
                 </Card.Title>
-                <Card.Text>
+                <Card.Text as='div'>
                   <Form>
                     <Form.Group controlId='file'>
-                      <Form.Control type='file' required />
+                      <Form.Control
+                        type='file'
+                        required
+                        onChange={captureFile}
+                      />
                       <Form.Text className='text-muted'>
                         Upload a file to DStorage
                       </Form.Text>
