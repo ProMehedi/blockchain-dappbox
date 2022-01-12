@@ -96,7 +96,7 @@ const Main = ({ files, uploadFile, loading }) => {
               <th>Description</th>
               <th>Type</th>
               <th>Size</th>
-              <th>Uploaded</th>
+              <th>Uploaded At</th>
               <th>Uploader</th>
               <th>View</th>
             </tr>
@@ -110,7 +110,7 @@ const Main = ({ files, uploadFile, loading }) => {
                 <td>{file.fileType}</td>
                 <td>{convertBytes(file.fileSize)}</td>
                 <td>
-                  {moment.unix(file.uploadTime).format('h:mm:ssa - MM/MD/Y')}
+                  {moment.unix(file.uploadTime).format('h:mm:ss A - MM/DD/Y')}
                 </td>
                 <td>
                   <a
