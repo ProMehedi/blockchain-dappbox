@@ -3,7 +3,9 @@ import { convertBytes } from './helpers'
 import moment from 'moment'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 
-const Main = ({}) => {
+const Main = ({ uploadFile }) => {
+  const [name, setName] = React.useState('')
+  const [desc, setDesc] = React.useState('')
   const [buffer, setBuffer] = React.useState([])
 
   //Get video
@@ -18,7 +20,11 @@ const Main = ({}) => {
     }
   }
 
-  console.log(buffer)
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    uploadFile(name, desc, buffer)
+    console.log(name, desc, buffer)
+  }
 
   return (
     <Container fluid>
@@ -31,7 +37,7 @@ const Main = ({}) => {
                   <h3>Upload your file</h3>
                 </Card.Title>
                 <Card.Text as='div'>
-                  <Form>
+                  <Form onSubmit={handleSubmit}>
                     <Form.Group controlId='file'>
                       <Form.Control
                         type='file'
@@ -48,6 +54,8 @@ const Main = ({}) => {
                         type='text'
                         placeholder='Enter a name for the file'
                         required
+                        value={name}
+                        onChange={({ target }) => setName(target.value)}
                       />
                     </Form.Group>
                     <Form.Group controlId='desc'>
@@ -57,6 +65,8 @@ const Main = ({}) => {
                         placeholder='Enter a description for the file'
                         rows='3'
                         required
+                        value={desc}
+                        onChange={({ target }) => setDesc(target.value)}
                       />
                     </Form.Group>
                     <Button variant='primary' type='submit'>
