@@ -3,10 +3,16 @@ import React from 'react'
 import Navbar from './Navbar'
 import Main from './Main'
 import Web3 from 'web3'
+import ipfsClient from 'ipfs-http-client'
 import './App.css'
 import { ScaleLoader } from 'react-spinners'
 
 //Declare IPFS
+const ipfs = ipfsClient({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+})
 
 const App = () => {
   const [loading, setLoading] = React.useState(false)
