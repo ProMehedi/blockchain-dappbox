@@ -9,7 +9,7 @@ import './App.css'
 
 const App = () => {
   const [loading, setLoading] = React.useState(false)
-  const [account, setAccount] = React.useState('0x0')
+  const [account, setAccount] = React.useState('')
   const [files, setFiles] = React.useState([])
 
   React.useEffect(() => {
@@ -17,11 +17,28 @@ const App = () => {
     loadBlockchainData()
   }, [])
 
-  const loadWeb3 = async () => {}
+  const loadWeb3 = () => {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum)
+      window.ethereum.enable()
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider)
+    } else {
+      window.alert(
+        'Non-Ethereum browser detected. You should consider trying MetaMask!'
+      )
+    }
+  }
 
-  const loadBlockchainData = async () => {}
+  const loadBlockchainData = async () => {
+    const web3 = window.web3
 
-  const uploadFile = async () => {}
+    // Load account
+    const accounts = await web3.eth.getAccounts()
+    setAccount(accounts[0])
+  }
+
+  const uploadFile = () => {}
 
   return (
     <div>

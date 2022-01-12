@@ -2,7 +2,7 @@ import React from 'react'
 import Identicon from 'identicon.js'
 import box from '../box.png'
 
-const Navbar = () => {
+const Navbar = ({ account }) => {
   return (
     <nav className='navbar navbar-dark bg-dark p-0 text-monospace'>
       <a
@@ -15,7 +15,22 @@ const Navbar = () => {
         D$t0r@g3
       </a>
       <ul className='navbar-nav px-3'>
-        <b className='text-white'>{'0x0'}</b>
+        {account ? (
+          <li>
+            <img
+              src={`data:image/png;base64,${new Identicon(
+                account,
+                30
+              ).toString()}`}
+              width='30'
+              height='30'
+              alt={account}
+            />
+            <small className='text-light ml-2'>{account}</small>
+          </li>
+        ) : (
+          <b className='text-light'>0x0</b>
+        )}
       </ul>
     </nav>
   )
