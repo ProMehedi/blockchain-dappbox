@@ -15,6 +15,7 @@ const Main = ({ files, uploadFile, loading }) => {
     event.preventDefault()
     const file = event.target.files[0]
     setType(file.type)
+    setName(file.name)
     const reader = new window.FileReader()
     reader.readAsArrayBuffer(file)
     reader.onloadend = async () => {
@@ -45,7 +46,7 @@ const Main = ({ files, uploadFile, loading }) => {
                       Upload a file to DStorage
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId='name'>
+                  {/* <Form.Group controlId='name'>
                     <Form.Label>File name</Form.Label>
                     <Form.Control
                       type='text'
@@ -54,7 +55,7 @@ const Main = ({ files, uploadFile, loading }) => {
                       value={name}
                       onChange={({ target }) => setName(target.value)}
                     />
-                  </Form.Group>
+                  </Form.Group> */}
                   <Form.Group controlId='desc'>
                     <Form.Label>File description</Form.Label>
                     <Form.Control

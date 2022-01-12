@@ -57,6 +57,7 @@ const App = () => {
       const _fileCount = await dstorage.methods.fileCount().call()
       setFileCount(Number(_fileCount))
 
+      setFiles([])
       for (let i = 1; i <= _fileCount; i++) {
         const file = await dstorage.methods.files(i).call()
         setFiles((files) => [...files, file])
